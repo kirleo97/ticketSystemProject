@@ -1,9 +1,6 @@
 package com.example.TicketSystem.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
@@ -12,7 +9,9 @@ public class Ticket {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
+    @ManyToOne(fetch = FetchType.EAGER)
     private Event event;
+    @ManyToOne(fetch = FetchType.EAGER)
     private Sector sector;
     private String seatNumber;
     private BigDecimal ticketCost;

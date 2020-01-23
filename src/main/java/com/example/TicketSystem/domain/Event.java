@@ -1,9 +1,6 @@
 package com.example.TicketSystem.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.Period;
 import java.time.ZonedDateTime;
 
@@ -13,11 +10,14 @@ public class Event {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
+    @ManyToOne(fetch = FetchType.EAGER)
     private EventType eventType;
     private String name;
     private ZonedDateTime dateOfEvent;
+    @ManyToOne(fetch = FetchType.EAGER)
     private Stadium stadiumOfEvent;
     private Period periodWhenStadiumIsBusy;
+    @ManyToOne(fetch = FetchType.EAGER)
     private Manager eventManager;
 
     public Event() {
