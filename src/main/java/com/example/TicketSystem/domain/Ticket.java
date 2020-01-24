@@ -1,9 +1,11 @@
 package com.example.TicketSystem.domain;
 
+import org.springframework.stereotype.Component;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 
-@Entity
+@Component
 public class Ticket {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

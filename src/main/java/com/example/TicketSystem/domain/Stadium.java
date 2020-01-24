@@ -1,28 +1,30 @@
 package com.example.TicketSystem.domain;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
+@Table(name = "stadiums")
 public class Stadium {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
+    @NotNull
+    @Size(max = 100)
+    @Column(name = "stadium_name", unique = true)
     private String name;
-    private List<Sector> sectors;
-    private List<Event> events;
+    @ManyToMany
+    private List<EventType> eventTypes;
 
     public Stadium() {
     }
 
-    public Stadium(String name, List<Sector> sectors, List<Event> events) {
+    public Stadium(String name, List<EventType> eventTypes) {
         this.name = name;
-        this.sectors = sectors;
-        this.events = events;
+        this.eventTypes = eventTypes;
     }
 
     public Integer getId() {
@@ -41,19 +43,11 @@ public class Stadium {
         this.name = name;
     }
 
-    public List<Sector> getSectors() {
-        return sectors;
+    public List<EventType> getEventTypes() {
+        return eventTypes;
     }
 
-    public void setSectors(List<Sector> sectors) {
-        this.sectors = sectors;
-    }
-
-    public List<Event> getEvents() {
-        return events;
-    }
-
-    public void setEvents(List<Event> events) {
-        this.events = events;
+    public void setEventTypes(List<EventType> eventTypes) {
+        this.eventTypes = eventTypes;
     }
 }

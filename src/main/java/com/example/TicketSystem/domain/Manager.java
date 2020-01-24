@@ -1,11 +1,12 @@
 package com.example.TicketSystem.domain;
 
-import javax.persistence.Entity;
+import org.springframework.stereotype.Component;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@Entity
+@Component
 public class Manager {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

@@ -1,10 +1,12 @@
 package com.example.TicketSystem.domain;
 
+import org.springframework.stereotype.Component;
+
 import javax.persistence.*;
 import java.time.Period;
 import java.time.ZonedDateTime;
 
-@Entity
+@Component
 public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
